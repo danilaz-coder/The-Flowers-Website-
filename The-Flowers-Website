@@ -1,0 +1,306 @@
+# The-Flowers-Website-
+
+Отлично! Создаем полноценный сайт для "The Flowers", интегрированный с ассистентом. Вот готовое решение:
+
+Структура сайта
+
+the-flowers-website/
+├── index.html              # Главная страница
+├── showcase.html          # Витрина букетов
+├── order.html            # Оформление заказа
+├── dashboard.html        # Дашборд (защищенный)
+├── style.css            # Стили
+├── script.js            # JavaScript
+├── images/              # Изображения
+│   ├── logo.png
+│   ├── bouquet1.jpg
+│   └── ...
+└── api/                 # Интеграция с ассистентом
+    └── client.js
+1. index.html (Главная страница)
+
+`html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Flowers - Цветы в Бургасе</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>🌹 The Flowers</h1>
+                <p>Цветы в Бургасе</p>
+            </div>
+            <nav class="nav">
+                <a href="#home" class="active">Главная</a>
+                <a href="#showcase">Витрина</a>
+                <a href="#order">Заказать</a>
+                <a href="#delivery">Доставка</a>
+                <a href="#contact">Контакты</a>
+                <a href="#assistant" class="btn-assistant">
+                    <i class="fas fa-robot"></i> Ассистент
+                </a>
+            </nav>
+            <div class="language-switcher">
+                <select id="language-select">
+                    <option value="ru">🇷🇺 RU</option>
+                    <option value="bg">🇧🇬 BG</option>
+                    <option value="en">🇬🇧 EN</option>
+                    <option value="tr">🇹🇷 TR</option>
+                </select>
+            </div>
+        </div>
+    </header>
+  
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Свежие цветы в Бургасе</h2>
+                <p class="subtitle">Доставка по всему городу • 4 языка • Оплата онлайн</p>
+                
+                <div class="cta-buttons">
+                    <a href="#showcase" class="btn btn-primary">
+                        <i class="fas fa-eye"></i> Смотреть букеты
+                    </a>
+                    <a href="#order" class="btn btn-secondary">
+                        <i class="fas fa-bolt"></i> Быстрый заказ
+                    </a>
+                    <button id="assistant-btn" class="btn btn-ai">
+                        <i class="fas fa-robot"></i> Помощь ассистента
+                    </button>
+                </div>
+
+                <!-- Assistant Chat Widget -->
+                <div id="assistant-widget" class="assistant-widget hidden">
+                    <div class="widget-header">
+                        <h3><i class="fas fa-robot"></i> The Flowers Assistant</h3>
+                        <button class="close-widget"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="widget-body">
+                        <div class="chat-messages" id="chat-messages">
+                            <div class="message assistant">
+                                <p>Привет! Я помогу вам с выбором букета в Бургасе. Что вас интересует?</p>
+                            </div>
+                        </div>
+                        <div class="widget-input">
+                            <input type="text" id="chat-input"
+
+
+placeholder="Например: 'Нужен букет до 60 левов' или 'Доставка в Сарафаново'">
+                            <button id="send-message"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                        <div class="quick-actions">
+                            <button class="quick-btn" data-query="букет до 60 левов">Букет до 60 лев</button>
+                            <button class="quick-btn" data-query="доставка сегодня">Доставка сегодня</button>
+                            <button class="quick-btn" data-query="праздничный букет">На праздник</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <h2>Почему выбирают The Flowers?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Мгновенный подбор</h3>
+                    <p>Показываем доступные букеты прямо сейчас в магазине</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Оплата до сборки</h3>
+                    <p>Без оплаты - букет не собираем. Защита для вас и для нас</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Помним о праздниках</h3>
+                    <p>Автоматические напоминания о Цветнице и именинах</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Доставка по Бургасу</h3>
+                    <p>Центр, Сарафаново, все районы. Отслеживание в реальном времени</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showcase Preview -->
+    <section id="showcase" class="showcase-preview">
+        <div class="container">
+            <h2>Букеты в наличии сегодня</h2>
+            <div class="bouquets-grid" id="bouquets-preview">
+                <!-- Динамически загружается через JS -->
+                <div class="loading">Загрузка букетов...</div>
+            </div>
+            <div class="text-center">
+                <a href="showcase.html" class="btn btn-primary">
+                    <i class="fas fa-store"></i> Вся витрина
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form -->
+    <section id="order" class="order-section">
+        <div class="container">
+            <h2>Быстрый заказ</h2>
+            <div class="order-form">
+                <div class="form-group">
+                    <label for="budget">Ваш бюджет (в левах):</label>
+                    <input type="range" id="budget" min="30" max="200" value="60">
+                    <span id="budget-value">60 лв</span>
+                </div>
+                
+                <button id="find-bouquets" class="btn btn-primary">
+                    <i class="fas fa-search"></i> Найти букеты
+                </button>
+                
+                <div id="order-results" class="hidden">
+                    <!-- Результаты поиска -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Zones -->
+    <section id="delivery" class="delivery-zones">
+        <div class="container">
+            <h2>Зоны доставки в Бургасе</h2>
+            <div class="zones-grid">
+                <div class="zone-card center">
+                    <h3><i class="fas fa-star"></i> Центр Бургаса</h3>
+                    <p class="price">Бесплатно от 80 лв</p>
+                    <ul>
+                        <li>Център</li>
+
+<li>Морска градина</li>
+                        <li>Лазур, Изгрев</li>
+                        <li>Славейков, Ветрен</li>
+                    </ul>
+                </div>
+                <div class="zone-card districts">
+                    <h3><i class="fas fa-home"></i> Районы</h3>
+                    <p class="price">8 лв</p>
+                    <ul>
+                        <li><strong>Сарафаново</strong></li>
+                        <li>Победа</li>
+                        <li>Меден рудник</li>
+                        <li>Долно/Горно Езерово</li>
+                    </ul>
+                </div>
+                <div class="zone-card suburbs">
+                    <h3><i class="fas fa-tree"></i> Пригороды</h3>
+                    <p class="price">12 лв</p>
+                    <ul>
+                        <li>Крайморие</li>
+                        <li>Братя Миладинови</li>
+                        <li>Българово*</li>
+                        <li>Черноморец*</li>
+                    </ul>
+                    <p class="note">* по предварительному заказу</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Info -->
+    <section id="contact" class="contact-info">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Наш магазин</h3>
+                    <p><strong>The Flowers</strong></p>
+                    <p>Центр Бургаса, рядом с морем</p>
+                    <p>Болгария, 8000 Бургас</p>
+                </div>
+                <div class="contact-card">
+                    <h3><i class="fas fa-clock"></i> Рабочие часы</h3>
+                    <p><strong>Ежедневно:</strong> 9:00 - 20:00</p>
+                    <p>Доставка: 10:00 - 19:00</p>
+                    <p>Онлайн заказы: 24/7</p>
+                </div>
+                <div class="contact-card">
+                    <h3><i class="fas fa-phone"></i> Связь с нами</h3>
+                    <p>Через ассистента на сайте</p>
+                    <p>Или посетите наш магазин</p>
+                    <div class="social-links">
+                        <a href="#" class="social"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>🌹 The Flowers</h3>
+                    <p>Цветы с любовью в Бургасе</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Главная</a>
+                    <a href="showcase.html">Витрина</a>
+                    <a href="#order">Заказ</a>
+                    <a href="#delivery">Доставка</a>
+                </div>
+                <div class="footer-actions">
+                    <button id="open-dashboard" class="btn-admin">
+                        <i class="fas fa-chart-line"></i> Дашборд
+                    </button>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 The Flowers, Бургас. Все права защищены.</p>
+                <p class="tech-note">
+                    <i class="fas fa-code"></i> 
+                    Powered by The Flowers Assistant
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Dashboard Modal (только для владельца) -->
+    <div id="dashboard-modal" class="modal hidden">
+        <div class="modal-content">
+        <div class="modal-header">
+                <h3><i class="fas fa-chart-line"></i> Финансовый дашборд</h3>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="dashboard-auth" id="dashboard-auth">
+                    <h4>Доступ только для владельца</h4>
+                    <input type="password" id="admin-password" 
+                           placeholder="Введите пароль" autocomplete="off">
+                    <button id="login-dashboard" class="btn btn-primary">
+                        <i class="fas fa-lock"></i> Войти
+                    </button>
+                </div>
+                <div id="dashboard-content" class="hidden">
+                    <!-- Динамически загружается через JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="api/client.js"></script>
+</body>
+</html>
