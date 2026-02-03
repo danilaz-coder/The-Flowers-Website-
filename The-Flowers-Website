@@ -3,20 +3,6 @@
 Отлично! Создаем полноценный сайт для "The Flowers", интегрированный с ассистентом. Вот готовое решение:
 
 Структура сайта
-
-the-flowers-website/
-├── index.html              # Главная страница
-├── showcase.html          # Витрина букетов
-├── order.html            # Оформление заказа
-├── dashboard.html        # Дашборд (защищенный)
-├── style.css            # Стили
-├── script.js            # JavaScript
-├── images/              # Изображения
-│   ├── logo.png
-│   ├── bouquet1.jpg
-│   └── ...
-└── api/                 # Интеграция с ассистентом
-    └── client.js
 1. index.html (Главная страница)
 
 `html
