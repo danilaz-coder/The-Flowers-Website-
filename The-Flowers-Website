@@ -304,3 +304,2570 @@ placeholder="Например: 'Нужен букет до 60 левов' или
     <script src="api/client.js"></script>
 </body>
 </html>
+Daniel 🌍 Kanay 🌐QA, [03/02/2026 18:10]
+<div class="modal-header">
+                <h3><i class="fas fa-chart-line"></i> Финансовый дашборд</h3>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="dashboard-auth" id="dashboard-auth">
+                    <h4>Доступ только для владельца</h4>
+                    <input type="password" id="admin-password" 
+                           placeholder="Введите пароль" autocomplete="off">
+                    <button id="login-dashboard" class="btn btn-primary">
+                        <i class="fas fa-lock"></i> Войти
+                    </button>
+                </div>
+                <div id="dashboard-content" class="hidden">
+                    <!-- Динамически загружается через JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="api/client.js"></script>
+</body>
+</html>
+
+2. style.css (Стили)
+
+css
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #f9f7f7 0%, #f0f7ff 100%);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.header {
+    background: white;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo h1 {
+    font-family: 'Playfair Display', serif;
+    color: #e91e63;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.logo p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.nav {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+}
+
+.nav a:hover {
+    color: #e91e63;
+}
+
+.nav a.active {
+    color: #e91e63;
+}
+
+.nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #e91e63;
+}
+
+.btn-assistant {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white !important;
+    padding: 8px 15px !important;
+    border-radius: 25px;
+    font-weight: 600 !important;
+}
+
+.language-switcher select {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Hero Section */
+.hero {
+    padding: 150px 0 100px;
+    background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
+                url('images/hero-bg.jpg') center/cover no-repeat;
+    text-align: center;
+}
+
+.hero h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #e91e63 0%, #ff4081 100%);
+    color: white;
+}
+
+.btn-secondary {
+    background: white;
+    color: #e91e63;
+    border: 2px solid #e91e63;
+}
+
+.btn-ai {
+    background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+Daniel 🌍 Kanay 🌐QA, [03/02/2026 18:10]
+/* Assistant Widget */
+.assistant-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.assistant-widget.hidden {
+    display: none;
+}
+
+.widget-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.widget-header h3 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.close-widget {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.widget-body {
+    padding: 15px;
+}
+
+.chat-messages {
+    height: 200px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 10px;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 15px;
+    max-width: 80%;
+}
+
+.message.assistant {
+    background: #e3f2fd;
+    margin-right: auto;
+}
+
+.message.user {
+    background: #e8f5e9;
+    margin-left: auto;
+}
+
+.widget-input {
+    display: flex;
+    gap: 10px;
+}
+
+.widget-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.widget-input button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.quick-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.quick-btn {
+    padding: 5px 10px;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.quick-btn:hover {
+    background: #e0e0e0;
+}
+
+/* Features */
+.features {
+    padding: 80px 0;
+    background: white;
+}
+
+.features h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    color: #2c3e50;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    text-align: center;
+    padding: 30px;
+    background: #f9f9f9;
+    border-radius: 15px;
+    transition: transform 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card i {
+    font-size: 2.5rem;
+    color: #e91e63;
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Showcase */
+.showcase-preview {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.showcase-preview h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.bouquets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.bouquet-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+.bouquet-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.bouquet-image {
+    height: 200px;
+    background: #ddd;
+    overflow: hidden;
+}
+
+.bouquet-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.bouquet-info {
+    padding: 20px;
+}
+
+.bouquet-info h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.bouquet-price {
+    font-size: 1.5rem;
+    color: #e91e63;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.bouquet-tags {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Order Section */
+.order-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.order-section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.order-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #f8f9fa;
+    padding: 40px;
+    border-radius: 15px;
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+Daniel 🌍 Kanay 🌐QA, [03/02/2026 18:10]
+.form-group input[type="range"] {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#budget-value {
+    font-size: 1.5rem;
+    color: #e91e63;
+    font-weight: 600;
+    display: block;
+    text-align: center;
+}
+
+/* Delivery Zones */
+.delivery-zones {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.zones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.zone-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.zone-card h3 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.zone-card .price {
+    font-size: 1.8rem;
+    color: #4CAF50;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.zone-card ul {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.zone-card li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.zone-card .note {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* Contact Info */
+.contact-info {
+    padding: 80px 0;
+    background: white;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.contact-card {
+    text-align: center;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 15px;
+}
+
+.contact-card h3 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.social {
+    width: 40px;
+    height: 40px;
+    background: #333;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.social:hover {
+    transform: translateY(-3px);
+    background: #e91e63;
+}
+
+/* Footer */
+.footer {
+    background: #2c3e50;
+    color: white;
+    padding: 60px 0 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 30px;
+}
+
+.footer-links a {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.btn-admin {
+    background: #e91e63;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #34495e;
+    color: #bbb;
+}
+
+.tech-note {
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.dashboard-auth {
+    text-align: center;
+    padding: 40px;
+}
+
+.dashboard-auth h4 {
+    margin-bottom: 20px;
+}
+
+.dashboard-auth input {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .hero h2 {
+        font-size: 2rem;
+
+}
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .assistant-widget {
+        width: 90%;
+        right: 5%;
+        bottom: 10px;
+    }
+    
+    .features-grid,
+    .bouquets-grid,
+    .zones-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Loading */
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    grid-column: 1 / -1;
+}
+
+.hidden {
+    display: none !important;
+}
+
+3. script.js (Основной JavaScript)
+
+javascript
+// Конфигурация API
+const API_CONFIG = {
+    baseUrl: 'http://localhost:8000/api', // Заменить на реальный URL
+    endpoints: {
+        bouquets: '/bouquets',
+        orders: '/orders',
+        dashboard: '/dashboard',
+        assistant: '/assistant/query',
+        logistics: '/logistics/active'
+    }
+};
+
+// Инициализация
+document.addEventListener('DOMContentLoaded', function() {
+    initLanguageSwitcher();
+    initAssistantWidget();
+    loadBouquetsPreview();
+    initOrderForm();
+    initDashboard();
+    smoothScroll();
+});
+
+// Переключение языка
+function initLanguageSwitcher() {
+    const select = document.getElementById('language-select');
+    if (select) {
+        select.addEventListener('change', function() {
+            const lang = this.value;
+            document.documentElement.lang = lang;
+            updateContentLanguage(lang);
+        });
+    }
+}
+
+function updateContentLanguage(lang) {
+    // Здесь будет логика перевода контента
+    console.log(Language switched to: ${lang});
+}
+
+// Виджет ассистента
+function initAssistantWidget() {
+    const assistantBtn = document.getElementById('assistant-btn');
+    const widget = document.getElementById('assistant-widget');
+    const closeBtn = widget.querySelector('.close-widget');
+    const sendBtn = document.getElementById('send-message');
+    const chatInput = document.getElementById('chat-input');
+    const quickBtns = document.querySelectorAll('.quick-btn');
+    
+    // Открытие/закрытие виджета
+    assistantBtn.addEventListener('click', () => {
+        widget.classList.remove('hidden');
+        chatInput.focus();
+    });
+    
+    closeBtn.addEventListener('click', () => {
+        widget.classList.add('hidden');
+    });
+    
+    // Отправка сообщения
+    function sendMessage() {
+        const message = chatInput.value.trim();
+        if (!message) return;
+        
+        // Добавляем сообщение пользователя
+        addMessage(message, 'user');
+        chatInput.value = '';
+        
+        // Отправляем запрос ассистенту
+        queryAssistant(message);
+    }
+    
+    sendBtn.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage();
+    });
+    
+    // Быстрые действия
+    quickBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const query = btn.dataset.query;
+            chatInput.value = query;
+            sendMessage();
+        });
+    });
+}
+
+function addMessage(text, sender) {
+    const messages = document.getElementById('chat-messages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = message ${sender};
+    messageDiv.innerHTML = <p>${text}</p>;
+    messages.appendChild(messageDiv);
+    messages.scrollTop = messages.scrollHeight;
+}
+
+async function queryAssistant(query) {
+    try {
+        const response = await fetch(${API_CONFIG.baseUrl}${API_CONFIG.endpoints.assistant}, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ query: query })
+        });
+        
+        const data = await response.json();
+
+Daniel 🌍 Kanay 🌐QA, [03/02/2026 18:10]
+if (data.success) {
+            let responseText = data.data?.message || 'Вот что я нашел:';
+            
+            // Обработка разных типов ответов
+            if (data.data?.type === 'showcase' && data.data.bouquets) {
+                responseText += '\n\n' + data.data.bouquets.map(b => 
+                    • ${b.name_ru} - ${b.price_bgn} лв
+                ).join('\n');
+                
+                // Показываем кнопку для перехода к заказу
+                setTimeout(() => {
+                    addQuickActionButton('Заказать один из этих букетов', 'order');
+                }, 500);
+            }
+            
+            addMessage(responseText, 'assistant');
+        } else {
+            addMessage('Извините, произошла ошибка. Попробуйте сформулировать иначе.', 'assistant');
+        }
+    } catch (error) {
+        console.error('Assistant query error:', error);
+        addMessage('Сервис временно недоступен. Попробуйте позже.', 'assistant');
+    }
+}
+
+function addQuickActionButton(text, action) {
+    const quickActions = document.querySelector('.quick-actions');
+    const btn = document.createElement('button');
+    btn.className = 'quick-btn';
+    btn.textContent = text;
+    btn.dataset.action = action;
+    
+    btn.addEventListener('click', () => {
+        if (action === 'order') {
+            window.location.href = '#order';
+            document.getElementById('assistant-widget').classList.add('hidden');
+        }
+    });
+    
+    quickActions.appendChild(btn);
+}
+
+// Загрузка букетов для превью
+async function loadBouquetsPreview() {
+    const container = document.getElementById('bouquets-preview');
+    if (!container) return;
+    
+    try {
+        const response = await fetch(${API_CONFIG.baseUrl}${API_CONFIG.endpoints.bouquets}?limit=4);
+        const data = await response.json();
+        
+        if (data.success && data.data?.items) {
+            container.innerHTML = data.data.items.map(bouquet => 
+                <div class="bouquet-card">
+                    <div class="bouquet-image">
+                        <img src="${bouquet.image_url || 'images/default-bouquet.jpg'}" 
+                             alt="${bouquet.name_ru}">
+                    </div>
+                    <div class="bouquet-info">
+                        <h3>${bouquet.name_ru}</h3>
+                        <div class="bouquet-price">${bouquet.price_bgn} лв</div>
+                        <p>${bouquet.description_ru?.substring(0, 80)}...</p>
+                        <div class="bouquet-tags">
+                            ${bouquet.category ? <span class="tag">${bouquet.category}</span> : ''}
+                            <span class="tag">В наличии</span>
+                        </div>
+                        <button class="btn btn-primary order-btn" 
+                                data-id="${bouquet.id}"
+                                style="margin-top: 10px; width: 100%;">
+                            <i class="fas fa-shopping-cart"></i> Заказать
+                        </button>
+                    </div>
+                </div>
+            ).join('');
+            
+            // Добавляем обработчики кнопок заказа
+            document.querySelectorAll('.order-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const bouquetId = this.dataset.id;
+                    window.location.href = order.html?bouquet=${bouquetId};
+                });
+            });
+        }
+    } catch (error) {
+        container.innerHTML = '<div class="loading">Ошибка загрузки букетов</div>';
+    }
+}
+
+// Форма заказа
+function initOrderForm() {
+    const budgetSlider = document.getElementById('budget');
+    const budgetValue = document.getElementById('budget-value');
+    const findBtn = document.getElementById('find-bouquets');
+
+Daniel 🌍 Kanay 🌐QA, [03/02/2026 18:10]
+const resultsDiv = document.getElementById('order-results');
+    
+    if (!budgetSlider || !budgetValue) return;
+    
+    // Обновление значения слайдера
+    budgetSlider.addEventListener('input', function() {
+        budgetValue.textContent = ${this.value} лв;
+    });
+    
+    // Поиск букетов
+    findBtn.addEventListener('click', async function() {
+        const maxPrice = budgetSlider.value;
+        findBtn.disabled = true;
+        findBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Ищем...';
+        
+        try {
+            const response = await fetch(
+                ${API_CONFIG.baseUrl}${API_CONFIG.endpoints.bouquets}?max_price=${maxPrice}&limit=5
+            );
+            const data = await response.json();
+            
+            if (data.success && data.data?.items.length > 0) {
+                resultsDiv.classList.remove('hidden');
+                resultsDiv.innerHTML = 
+                    <h3>Найденные букеты до ${maxPrice} лв:</h3>
+                    <div class="bouquets-grid" style="margin-top: 20px;">
+                        ${data.data.items.map(bouquet => 
+                            <div class="bouquet-card">
+                                <div class="bouquet-image">
+                                    <img src="${bouquet.image_url || 'images/default-bouquet.jpg'}" 
+                                         alt="${bouquet.name_ru}">
+                                </div>
+                                <div class="bouquet-info">
+                                    <h3>${bouquet.name_ru}</h3>
+                                    <div class="bouquet-price">${bouquet.price_bgn} лв</div>
+                                    <button class="btn btn-primary select-bouquet" 
+                                            data-id="${bouquet.id}"
+                                            style="width: 100%; margin-top: 10px;">
+                                        Выбрать этот букет
+                                    </button>
+                                </div>
+                            </div>
+                        ).join('')}
+                    </div>
+                ;
+                
+                // Обработка выбора букета
+                document.querySelectorAll('.select-bouquet').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const bouquetId = this.dataset.id;
+                        window.location.href = order.html?bouquet=${bouquetId}&budget=${maxPrice};
+                    });
+                });
+            } else {
+                resultsDiv.classList.remove('hidden');
+                resultsDiv.innerHTML = 
+                    <div class="alert">
+                        <i class="fas fa-info-circle"></i>
+                        <p>К сожалению, букетов до ${maxPrice} лв сейчас нет.</p>
+                        <p>Попробуйте увеличить бюджет или загляните позже.</p>
+                    </div>
+                ;
+            }
+        } catch (error) {
+            resultsDiv.classList.remove('hidden');
+            resultsDiv.innerHTML = 
+                <div class="alert error">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>Ошибка при поиске букетов. Пожалуйста, попробуйте снова.</p>
+                </div>
+            ;
+        } finally {
+            findBtn.disabled = false;
+            findBtn.innerHTML = '<i class="fas fa-search"></i> Найти букеты';
+        }
+    });
+}
+
+// Дашборд
+function initDashboard() {
+    const openBtn = document.getElementById('open-dashboard');
+    const modal = document.getElementById('dashboard-modal');
+    const closeBtn = modal.querySelector('.close-modal');
+    const loginBtn = document.getElementById('login-dashboard');
+    const passwordInput = document.getElementById('admin-password');
+
+
+if (!openBtn) return;
+    
+    openBtn.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+    });
+    
+    closeBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+    
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+        }
+    });
+    
+    // Авторизация
+    loginBtn.addEventListener('click', async () => {
+        const password = passwordInput.value;
+        
+        if (password === 'admin123') { // Заменить на реальную проверку
+            document.getElementById('dashboard-auth').classList.add('hidden');
+            document.getElementById('dashboard-content').classList.remove('hidden');
+            
+            // Загружаем данные дашборда
+            await loadDashboardData();
+        } else {
+            alert('Неверный пароль');
+        }
+    });
+}
+
+async function loadDashboardData() {
+    const content = document.getElementById('dashboard-content');
+    content.innerHTML = '<div class="loading">Загрузка дашборда...</div>';
+    
+    try {
+        const response = await fetch(${API_CONFIG.baseUrl}${API_CONFIG.endpoints.dashboard}?period=today);
+        const data = await response.json();
+        
+        if (data.success) {
+            const report = data.data;
+            content.innerHTML = 
+                <div class="dashboard-grid">
+                    <div class="metric-card">
+                        <h4>💰 Сегодня</h4>
+                        <div class="metric-value">${report.metrics?.total_income || 0} лв</div>
+                        <p>Доход</p>
+                    </div>
+                    <div class="metric-card">
+                        <h4>🛒 Заказы</h4>
+                        <div class="metric-value">${report.metrics?.total_orders || 0}</div>
+                        <p>Сегодня</p>
+                    </div>
+                    <div class="metric-card">
+                        <h4>📦 Доставки</h4>
+                        <div class="metric-value" id="active-deliveries">0</div>
+                        <p>Активные</p>
+                    </div>
+                    <div class="metric-card">
+                        <h4>🎯 Цель</h4>
+                        <div class="metric-value">${report.metrics?.target || '500'} лв</div>
+                        <p>На сегодня</p>
+                    </div>
+                </div>
+                <div class="dashboard-section">
+                    <h4>📊 Последние заказы</h4>
+                    <div id="recent-orders" class="orders-list"></div>
+                </div>
+                <div class="dashboard-actions">
+                    <button class="btn btn-primary" id="export-report">
+                        <i class="fas fa-download"></i> Экспорт отчета
+                    </button>
+                    <button class="btn btn-secondary" id="refresh-dashboard">
+                        <i class="fas fa-sync-alt"></i> Обновить
+                    </button>
+                </div>
+            ;
+            
+            // Загружаем дополнительные данные
+            loadActiveDeliveries();
+            loadRecentOrders();
+            
+            // Обработчики кнопок
+            document.getElementById('refresh-dashboard').addEventListener('click', loadDashboardData);
+            document.getElementById('export-report').addEventListener('click', exportReport);
+        }
+    } catch (error) {
+        content.innerHTML = '<div class="alert error">Ошибка загрузки дашборда</div>';
+    }
+}
+
+async function loadActiveDeliveries() {
+    try {
+        const response = await fetch(${API_CONFIG.baseUrl}${API_CONFIG.endpoints.logistics});
+        const data = await response.json();
+        
+        if (data.length > 0) {
+            document.getElementById('active-deliveries').textContent = data.length;
+        }
+    } catch (error) {
+        console.error('Error loading deliveries:', error);
+    }
+}
+
+async function loadRecentOrders() {
+    // Здесь будет загрузка последних заказов
+}
+
+Daniel 🌍 Kanay 🌐QA, [03/02/2026 18:10]
+async function exportReport() {
+    try {
+        const response = await fetch(${API_CONFIG.baseUrl}${API_CONFIG.endpoints.dashboard}?period=today&format=csv);
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = dashboard_${new Date().toISOString().split('T')[0]}.csv;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    } catch (error) {
+        console.error('Export error:', error);
+    }
+}
+
+// Плавная прокрутка
+function smoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// Утилиты
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = notification ${type};
+    notification.innerHTML = 
+        <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i>
+        <span>${message}</span>
+    ;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 10);
+    
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 300);
+    }, 3000);
+}
+
+// Стили для уведомлений
+const notificationStyles = document.createElement('style');
+notificationStyles.textContent = 
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 3000;
+    transform: translateX(120%);
+    transition: transform 0.3s ease;
+}
+.notification.show {
+    transform: translateX(0);
+}
+.notification.success {
+    border-left: 4px solid #4CAF50;
+}
+.notification.error {
+    border-left: 4px solid #f44336;
+}
+.notification.info {
+    border-left: 4px solid #2196F3;
+}
+;
+document.head.appendChild(notificationStyles);
+
+4. showcase.html (Страница витрины)
+
+html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Витрина - The Flowers</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h1>🌹 The Flowers</h1>
+                    <p>Витрина букетов</p>
+                </a>
+            </div>
+            <nav class="nav">
+                <a href="index.html">← На главную</a>
+                <a href="order.html">Заказать</a>
+                <a href="#filter" id="filter-toggle">
+                    <i class="fas fa-filter"></i> Фильтры
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="showcase-page">
+        <div class="container">
+            <!-- Фильтры -->
+            <div id="filters" class="filters-panel hidden">
+                <div class="filter-group">
+                    <label>Бюджет (лв):</label>
+
+Daniel 🌍 Kanay 🌐QA, [03/02/2026 18:10]
+<input type="range" id="price-filter" min="30" max="200" value="100">
+                    <span id="price-value">до 100 лв</span>
+                </div>
+                <div class="filter-group">
+                    <label>Категория:</label>
+                    <select id="category-filter">
+                        <option value="">Все</option>
+                        <option value="roses">Розы</option>
+                        <option value="tulips">Тюльпаны</option>
+                        <option value="lilies">Лилии</option>
+                        <option value="mixed">Смешанные</option>
+                        <option value="seasonal">Сезонные</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Случай:</label>
+                    <select id="occasion-filter">
+                        <option value="">Любой</option>
+                        <option value="birthday">День рождения</option>
+                        <option value="anniversary">Годовщина</option>
+                        <option value="love">Признание в любви</option>
+                        <option value="apology">Извинение</option>
+                        <option value="holiday">Праздник</option>
+                    </select>
+                </div>
+                <button id="apply-filters" class="btn btn-primary">
+                    <i class="fas fa-check"></i> Применить
+                </button>
+                <button id="reset-filters" class="btn btn-secondary">
+                    <i class="fas fa-redo"></i> Сбросить
+                </button>
+            </div>
+
+            <!-- Заголовок и статистика -->
+            <div class="showcase-header">
+                <h2>Витрина букетов The Flowers</h2>
+                <p id="bouquet-count">Загрузка...</p>
+            </div>
+
+            <!-- Сетка букетов -->
+            <div class="bouquets-grid" id="bouquets-container">
+                <div class="loading">Загрузка букетов...</div>
+            </div>
+
+            <!-- Пагинация -->
+            <div class="pagination" id="pagination">
+                <!-- Динамически генерируется -->
+            </div>
+
+            <!-- Информация -->
+            <div class="showcase-info">
+                <div class="info-card">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Обновляется ежедневно</h3>
+                    <p>Фото реальных букетов, которые есть в магазине прямо сейчас</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-truck"></i>
+                    <h3>Доставка сегодня</h3>
+                    <p>Закажите до 18:00 - доставим в тот же день</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-lock"></i>
+                    <h3>Безопасная оплата</h3>
+                    <p>Оплата онлайн до сборки букета. Гарантия свежести</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальное окно букета -->
+    <div id="bouquet-modal" class="modal hidden">
+        <div class="modal-content bouquet-modal-content">
+            <div class="modal-header">
+                <h3 id="modal-bouquet-name"></h3>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="bouquet-modal-grid">
+                    <div class="bouquet-modal-image">
+                        <img id="modal-bouquet-image" src="" alt="">
+                    </div>
+                    <div class="bouquet-modal-info">
+                        <div class="modal-price" id="modal-bouquet-price"></div>
+                        <div class="modal-description" id="modal-bouquet-description"></div>
+
+
+<div class="modal-tags" id="modal-bouquet-tags"></div>
+                        <div class="modal-stock">
+                            <i class="fas fa-check-circle"></i>
+                            <span id="modal-bouquet-stock"></span>
+                        </div>
+                        <button class="btn btn-primary order-from-modal" style="width: 100%; margin-top: 20px;">
+                            <i class="fas fa-shopping-cart"></i> Заказать этот букет
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="api/showcase.js"></script>
+</body>
+</html>
+
+5. order.html (Страница оформления заказа)
+
+html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформление заказа - The Flowers</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h1>🌹 The Flowers</h1>
+                    <p>Оформление заказа</p>
+                </a>
+            </div>
+            <nav class="nav">
+                <a href="index.html">← На главную</a>
+                <a href="showcase.html">Витрина</a>
+                <a href="#help" id="help-btn">
+                    <i class="fas fa-question-circle"></i> Помощь
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="order-page">
+        <div class="container">
+            <!-- Шаги заказа -->
+            <div class="order-steps">
+                <div class="step active" data-step="1">
+                    <span class="step-number">1</span>
+                    <span class="step-text">Выбор букета</span>
+                </div>
+                <div class="step" data-step="2">
+                    <span class="step-number">2</span>
+                    <span class="step-text">Информация о доставке</span>
+                </div>
+                <div class="step" data-step="3">
+                    <span class="step-number">3</span>
+                    <span class="step-text">Оплата</span>
+                </div>
+                <div class="step" data-step="4">
+                    <span class="step-number">4</span>
+                    <span class="step-text">Подтверждение</span>
+                </div>
+            </div>
+
+            <!-- Шаг 1: Выбор букета -->
+            <div id="step-1" class="order-step active">
+                <h2>Выберите букет</h2>
+                
+                <!-- Если букет уже выбран из параметров URL -->
+                <div id="selected-bouquet-preview" class="hidden">
+                    <!-- Динамически заполняется -->
+                </div>
+
+                <!-- Поиск по бюджету -->
+                <div class="budget-search">
+                    <h3>Или найдите по бюджету:</h3>
+                    <div class="budget-slider">
+                        <input type="range" id="order-budget" min="30" max="200" value="60">
+                        <span id="order-budget-value">до 60 лв</span>
+                    </div>
+                    <button id="search-by-budget" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Найти букеты
+                    </button>
+                </div>
+
+                <!-- Результаты поиска -->
+                <div id="search-results" class="bouquets-grid" style="margin-top: 30px;">
+                    <!-- Динамически заполняется -->
+                </div>
+            </div>
+
+
+<!-- Шаг 2: Информация о доставке -->
+            <div id="step-2" class="order-step hidden">
+                <h2>Информация для доставки</h2>
+                
+                <form id="delivery-form" class="order-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="customer-name">Ваше имя *</label>
+                            <input type="text" id="customer-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-phone">Телефон *</label>
+                            <input type="tel" id="customer-phone" required 
+                                   placeholder="+359 XX XXX XXX">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="delivery-address">Адрес доставки *</label>
+                        <textarea id="delivery-address" rows="3" required 
+                                  placeholder="Улица, дом, квартира..."></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="delivery-zone">Район доставки *</label>
+                            <select id="delivery-zone" required>
+                                <option value="">Выберите район</option>
+                                <option value="center">Центр Бургаса</option>
+                                <option value="sarafovo">Сарафаново</option>
+                                <option value="sea_garden">Морска градина</option>
+                                <option value="lazur">Лазур</option>
+                                <option value="izgrev">Изгрев</option>
+                                <option value="other">Другой район</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="delivery-date">Дата доставки</label>
+                            <input type="date" id="delivery-date" 
+                                   min="<?php echo date('Y-m-d'); ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="delivery-time">Время доставки</label>
+                            <select id="delivery-time">
+                                <option value="">Любое время</option>
+                                <option value="10:00-12:00">10:00 - 12:00</option>
+                                <option value="12:00-14:00">12:00 - 14:00</option>
+                                <option value="14:00-16:00">14:00 - 16:00</option>
+                                <option value="16:00-18:00">16:00 - 18:00</option>
+                                <option value="18:00-20:00">18:00 - 20:00</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="order-notes">Примечания к заказу</label>
+                        <textarea id="order-notes" rows="2" 
+                                  placeholder="Пожелания к букету, код домофона и т.д."></textarea>
+                    </div>
+
+                    <!-- Расчет стоимости -->
+                    <div class="price-calculation">
+                        <div class="price-row">
+                            <span>Стоимость букета:</span>
+                            <span id="bouquet-price">0 лв</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Доставка:</span>
+                            <span id="delivery-fee">0 лв</span>
+                        </div>
+                        <div class="price-row total">
+                            <strong>Итого к оплате:</strong>
+                            <strong id="total-price">0 лв</strong>
+                        </div>
+                    </div>
+
+<div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="prev-step">
+                            ← Назад
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="next-to-payment">
+                            Продолжить к оплате →
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Шаг 3: Оплата -->
+            <div id="step-3" class="order-step hidden">
+                <h2>Выберите способ оплаты</h2>
+                
+                <div class="payment-methods">
+                    <div class="payment-method active" data-method="card">
+                        <div class="method-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <div class="method-info">
+                            <h3>Банковская карта</h3>
+                            <p>Оплата через Stripe (Visa, MasterCard)</p>
+                        </div>
+                    </div>
+
+                    <div class="payment-method" data-method="revolut">
+                        <div class="method-icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <div class="method-info">
+                            <h3>Revolut</h3>
+                            <p>Быстрый перевод через Revolut</p>
+                        </div>
+                    </div>
+
+                    <div class="payment-method" data-method="bank">
+                        <div class="method-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="method-info">
+                            <h3>Банковский перевод</h3>
+                            <p>Реквизиты болгарского банка</p>
+                        </div>
+                    </div>
+
+                    <div class="payment-method" data-method="crypto">
+                        <div class="method-icon">
+                            <i class="fab fa-bitcoin"></i>
+                        </div>
+                        <div class="method-info">
+                            <h3>Криптовалюта</h3>
+                            <p>Bitcoin, Ethereum, USDT</p>
+                        </div>
+                    </div>
+
+                    <div class="payment-method" data-method="cash">
+                        <div class="method-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <div class="method-info">
+                            <h3>Наличными курьеру</h3>
+                            <p>Оплата при получении</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Платежная форма -->
+                <div id="payment-form" class="payment-form">
+                    <!-- Динамически меняется в зависимости от метода -->
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="prev-to-delivery">
+                        ← Назад к доставке
+                    </button>
+                    <button type="button" class="btn btn-primary" id="place-order">
+                        <i class="fas fa-lock"></i> Оформить заказ
+                    </button>
+                </div>
+            </div>
+
+            <!-- Шаг 4: Подтверждение -->
+            <div id="step-4" class="order-step hidden">
+                <div class="order-success">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h2>Заказ оформлен успешно!</h2>
+                    
+                    <div id="order-details" class="order-details">
+                        <!-- Динамически заполняется -->
+                    </div>
+
+<div class="success-actions">
+                        <a href="index.html" class="btn btn-primary">
+                            <i class="fas fa-home"></i> На главную
+                        </a>
+                        <button id="track-order" class="btn btn-secondary">
+                            <i class="fas fa-truck"></i> Отслеживать доставку
+                        </button>
+                        <button id="print-receipt" class="btn btn-secondary">
+                            <i class="fas fa-print"></i> Распечатать чек
+                        </button>
+                    </div>
+
+                    <div class="success-info">
+                        <p><i class="fas fa-info-circle"></i> 
+                           Мы отправили детали заказа на ваш телефон.</p>
+                        <p><i class="fas fa-clock"></i> 
+                           Курьер свяжется с вами за 30 минут до доставки.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Помощь -->
+    <div id="help-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-question-circle"></i> Помощь по заказу</h3>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="help-sections">
+                    <div class="help-section">
+                        <h4>📞 Связь с нами</h4>
+                        <p>Если возникли проблемы с заказом, вы можете:</p>
+                        <ul>
+                            <li>Воспользоваться чатом с ассистентом</li>
+                            <li>Посетить наш магазин в центре Бургаса</li>
+                            <li>Прийти в рабочее время: 9:00-20:00</li>
+                        </ul>
+                    </div>
+                    <div class="help-section">
+                        <h4>🚚 Доставка</h4>
+                        <p><strong>Центр Бургаса:</strong> 30-45 минут</p>
+                        <p><strong>Сарафаново и районы:</strong> 45-60 минут</p>
+                        <p><strong>Пригороды:</strong> 60-90 минут</p>
+                    </div>
+                    <div class="help-section">
+                        <h4>💳 Оплата</h4>
+                        <p>Мы принимаем оплату до сборки букета. Это гарантия:</p>
+                        <ul>
+                            <li>Свежести цветов</li>
+                            <li>Точного времени доставки</li>
+                            <li>Надежности заказа</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="api/order.js"></script>
+</body>
+</html>
+
+6. api/client.js (Интеграция с ассистентом)
+
+javascript
+// API клиент для интеграции с The Flowers Assistant
+class FlowersAPI {
+    constructor(baseUrl = 'http://localhost:8000/api') {
+        this.baseUrl = baseUrl;
+        this.endpoints = {
+            bouquets: '/bouquets',
+            bouquet: '/bouquets/{id}',
+            orders: '/orders',
+            order: '/orders/{id}',
+            dashboard: '/dashboard',
+            assistant: '/assistant/query',
+            logistics: '/logistics/active',
+            delivery: '/logistics/{id}',
+            crm: '/crm/reminders'
+        };
+    }
+
+    // Общий метод запроса
+    async request(endpoint, options = {}) {
+        const url = ${this.baseUrl}${endpoint};
+        const defaultOptions = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        };
+
+        try {
+            const response = await fetch(url, { ...defaultOptions, ...options });
+            
+            if (!response.ok) {
+                throw new Error(HTTP ${response.status}: ${response.statusText});
+            }
+
+return await response.json();
+        } catch (error) {
+            console.error(API request failed: ${endpoint}, error);
+            throw error;
+        }
+    }
+
+    // Букеты
+    async getBouquets(filters = {}) {
+        const queryParams = new URLSearchParams(filters).toString();
+        const endpoint = ${this.endpoints.bouquets}${queryParams ? '?' + queryParams : ''};
+        return this.request(endpoint);
+    }
+
+    async getBouquet(id) {
+        const endpoint = this.endpoints.bouquet.replace('{id}', id);
+        return this.request(endpoint);
+    }
+
+    // Заказы
+    async createOrder(orderData) {
+        return this.request(this.endpoints.orders, {
+            method: 'POST',
+            body: JSON.stringify(orderData)
+        });
+    }
+
+    async getOrder(id) {
+        const endpoint = this.endpoints.order.replace('{id}', id);
+        return this.request(endpoint);
+    }
+
+    async updateOrderStatus(id, status) {
+        const endpoint = this.endpoints.order.replace('{id}', id);
+        return this.request(endpoint, {
+            method: 'PUT',
+            body: JSON.stringify({ status })
+        });
+    }
+
+    // Дашборд
+    async getDashboard(period = 'today') {
+        const endpoint = ${this.endpoints.dashboard}?period=${period};
+        return this.request(endpoint);
+    }
+
+    // Ассистент
+    async queryAssistant(query) {
+        return this.request(this.endpoints.assistant, {
+            method: 'POST',
+            body: JSON.stringify({ query })
+        });
+    }
+
+    // Логистика
+    async getActiveDeliveries() {
+        return this.request(this.endpoints.logistics);
+    }
+
+    async updateDelivery(id, data) {
+        const endpoint = this.endpoints.delivery.replace('{id}', id);
+        return this.request(endpoint, {
+            method: 'PUT',
+            body: JSON.stringify(data)
+        });
+    }
+
+    // CRM
+    async getUpcomingReminders(days = 7) {
+        const endpoint = ${this.endpoints.crm}?days_ahead=${days};
+        return this.request(endpoint);
+    }
+
+    // Утилиты
+    calculateDeliveryFee(zone, orderAmount) {
+        const thresholds = {
+            center: { fee: 5, free: 80 },
+            sarafovo: { fee: 8, free: 150 },
+            districts: { fee: 8, free: 150 },
+            suburbs: { fee: 12, free: 200 }
+        };
+
+        const config = thresholds[zone] || thresholds.center;
+        return orderAmount >= config.free ? 0 : config.fee;
+    }
+
+    formatPrice(amount, currency = 'лв') {
+        return ${amount.toFixed(2)} ${currency};
+    }
+
+    formatDate(date) {
+        return new Date(date).toLocaleDateString('ru-RU', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+    }
+}
+
+// Инициализация API клиента
+const flowersAPI = new FlowersAPI();
+
+// Экспорт для использования в других файлах
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { FlowersAPI, flowersAPI };
+} else {
+    window.flowersAPI = flowersAPI;
+}
+
+// Утилиты для работы с URL параметрами
+const URLUtils = {
+    getParam(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    },
+
+    setParam(name, value) {
+        const url = new URL(window.location);
+        url.searchParams.set(name, value);
+        window.history.pushState({}, '', url);
+    },
+
+    getAllParams() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const params = {};
+        for (const [key, value] of urlParams) {
+            params[key] = value;
+        }
+        return params;
+    }
+};
+
+// Локальное хранилище для корзины
+const CartStorage = {
+    KEY: 'the_flowers_cart',
+
+    getCart() {
+        const cartJson = localStorage.getItem(this.KEY);
+        return cartJson ? JSON.parse(cartJson) : [];
+    },
+
+addToCart(bouquet) {
+        const cart = this.getCart();
+        cart.push({
+            id: bouquet.id,
+            name: bouquet.name_ru,
+            price: bouquet.price_bgn,
+            image: bouquet.image_url,
+            addedAt: new Date().toISOString()
+        });
+        localStorage.setItem(this.KEY, JSON.stringify(cart));
+        this.updateCartCount();
+        return cart;
+    },
+
+    removeFromCart(bouquetId) {
+        let cart = this.getCart();
+        cart = cart.filter(item => item.id !== bouquetId);
+        localStorage.setItem(this.KEY, JSON.stringify(cart));
+        this.updateCartCount();
+        return cart;
+    },
+
+    clearCart() {
+        localStorage.removeItem(this.KEY);
+        this.updateCartCount();
+    },
+
+    updateCartCount() {
+        const cart = this.getCart();
+        const count = cart.length;
+        
+        // Обновляем счетчик в UI если есть
+        const counter = document.getElementById('cart-counter');
+        if (counter) {
+            counter.textContent = count;
+            counter.style.display = count > 0 ? 'inline' : 'none';
+        }
+    }
+};
+
+// Инициализация корзины при загрузке
+document.addEventListener('DOMContentLoaded', () => {
+    CartStorage.updateCartCount();
+});
+
+7. api/order.js (Логика оформления заказа)
+
+javascript
+// Логика для страницы оформления заказа
+document.addEventListener('DOMContentLoaded', function() {
+    initOrderPage();
+});
+
+function initOrderPage() {
+    // Получаем параметры из URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const bouquetId = urlParams.get('bouquet');
+    const budget = urlParams.get('budget');
+
+    // Инициализация шагов
+    initOrderSteps();
+    
+    // Если есть bouquetId, загружаем букет
+    if (bouquetId) {
+        loadBouquet(bouquetId);
+    }
+    
+    // Если есть бюджет, устанавливаем слайдер
+    if (budget) {
+        document.getElementById('order-budget').value = budget;
+        document.getElementById('order-budget-value').textContent = до ${budget} лв;
+    }
+    
+    // Инициализация поиска по бюджету
+    initBudgetSearch();
+    
+    // Инициализация формы доставки
+    initDeliveryForm();
+    
+    // Инициализация методов оплаты
+    initPaymentMethods();
+    
+    // Кнопка помощи
+    const helpBtn = document.getElementById('help-btn');
+    const helpModal = document.getElementById('help-modal');
+    if (helpBtn && helpModal) {
+        helpBtn.addEventListener('click', () => {
+            helpModal.classList.remove('hidden');
+        });
+        helpModal.querySelector('.close-modal').addEventListener('click', () => {
+            helpModal.classList.add('hidden');
+        });
+    }
+}
+
+function initOrderSteps() {
+    const steps = document.querySelectorAll('.order-step');
+    const stepIndicators = document.querySelectorAll('.step');
+    const nextButtons = document.querySelectorAll('[id^="next"]');
+    const prevButtons = document.querySelectorAll('[id^="prev"]');
+    
+    let currentStep = 1;
+    
+    function goToStep(step) {
+        // Скрываем все шаги
+        steps.forEach(s => s.classList.add('hidden'));
+        stepIndicators.forEach(s => s.classList.remove('active'));
+        
+        // Показываем нужный шаг
+        document.getElementById(step-${step}).classList.remove('hidden');
+        document.querySelector(.step[data-step="${step}"]).classList.add('active');
+        
+        currentStep = step;
+        
+        // Обновляем URL
+        URLUtils.setParam('step', step);
+    }
+    
+    // Обработчики кнопок "Далее"
+    nextButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const targetStep = currentStep + 1;
+            
+            // Валидация перед переходом
+            if (currentStep === 1 && !validateStep1()) return;
+            if (currentStep === 2 && !validateStep2()) return;
+
+
+if (currentStep === 3 && !validateStep3()) return;
+            
+            goToStep(targetStep);
+            
+            // Если переходим на шаг оплаты, обновляем расчет
+            if (targetStep === 3) {
+                updatePaymentSummary();
+            }
+        });
+    });
+    
+    // Обработчики кнопок "Назад"
+    prevButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            goToStep(currentStep - 1);
+        });
+    });
+    
+    // Инициализация из URL
+    const urlStep = URLUtils.getParam('step');
+    if (urlStep && parseInt(urlStep) <= steps.length) {
+        goToStep(parseInt(urlStep));
+    } else {
+        goToStep(1);
+    }
+}
+
+async function loadBouquet(bouquetId) {
+    try {
+        const response = await flowersAPI.getBouquet(bouquetId);
+        if (response.success) {
+            displaySelectedBouquet(response.data);
+        }
+    } catch (error) {
+        console.error('Error loading bouquet:', error);
+        showNotification('Ошибка загрузки букета', 'error');
+    }
+}
+
+function displaySelectedBouquet(bouquet) {
+    const previewDiv = document.getElementById('selected-bouquet-preview');
+    if (!previewDiv) return;
+    
+    previewDiv.classList.remove('hidden');
+    previewDiv.innerHTML = 
+        <div class="selected-bouquet">
+            <div class="selected-image">
+                <img src="${bouquet.image_url || 'images/default-bouquet.jpg'}" 
+                     alt="${bouquet.name_ru}">
+            </div>
+            <div class="selected-info">
+                <h3>Вы выбрали: ${bouquet.name_ru}</h3>
+                <div class="selected-price">${flowersAPI.formatPrice(bouquet.price_bgn)}</div>
+                <p>${bouquet.description_ru || ''}</p>
+                <button class="btn btn-secondary" id="change-bouquet">
+                    <i class="fas fa-exchange-alt"></i> Выбрать другой
+                </button>
+            </div>
+        </div>
+    ;
+    
+    // Сохраняем выбранный букет в сессии
+    sessionStorage.setItem('selectedBouquet', JSON.stringify(bouquet));
+    
+    // Кнопка смены букета
+    document.getElementById('change-bouquet').addEventListener('click', function() {
+        previewDiv.classList.add('hidden');
+        sessionStorage.removeItem('selectedBouquet');
+        document.getElementById('step-1').classList.remove('hidden');
+    });
+    
+    // Переходим сразу к шагу 2
+    goToStep(2);
+}
+
+function initBudgetSearch() {
+    const budgetSlider = document.getElementById('order-budget');
+    const budgetValue = document.getElementById('order-budget-value');
+    const searchBtn = document.getElementById('search-by-budget');
+    
+    if (!budgetSlider  !budgetValue  !searchBtn) return;
+    
+    // Обновление значения слайдера
+    budgetSlider.addEventListener('input', function() {
+        budgetValue.textContent = до ${this.value} лв;
+    });
+    
+    // Поиск
+    searchBtn.addEventListener('click', async function() {
+        const maxPrice = budgetSlider.value;
+        searchBtn.disabled = true;
+        searchBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Ищем...';
+        
+        try {
+            const response = await flowersAPI.getBouquets({
+                max_price: maxPrice,
+                available_only: true,
+                limit: 6
+            });
+            
+            const resultsDiv = document.getElementById('search-results');
+            if (response.success && response.data?.items.length > 0) {
+                resultsDiv.innerHTML = response.data.items.map(bouquet => `
+                    <div class="bouquet-card">
+                        <div class="bouquet-image">
+                            <img src="${bouquet.image_url || 'images/default-bouquet.jpg'}" 
+                                 alt="${bouquet.name_ru}">
+
+
+</div>
+                        <div class="bouquet-info">
+                            <h3>${bouquet.name_ru}</h3>
+                            <div class="bouquet-price">${flowersAPI.formatPrice(bouquet.price_bgn)}</div>
+                            <p>${bouquet.description_ru?.substring(0, 60) || ''}...</p>
+                            <button class="btn btn-primary select-for-order" 
+                                    data-id="${bouquet.id}"
+                                    style="width: 100%; margin-top: 10px;">
+                                <i class="fas fa-check"></i> Выбрать
+                            </button>
+                        </div>
+                    </div>
+                ).join('');
+                
+                // Обработчики выбора
+                document.querySelectorAll('.select-for-order').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const bouquetId = this.dataset.id;
+                        loadBouquet(bouquetId);
+                    });
+                });
+            } else {
+                resultsDiv.innerHTML = 
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <h4>Букетов до ${maxPrice} лв не найдено</h4>
+                        <p>Попробуйте увеличить бюджет или загляните в полную витрину</p>
+                        <a href="showcase.html" class="btn btn-secondary">
+                            <i class="fas fa-store"></i> Перейти в витрину
+                        </a>
+                    </div>
+                `;
+            }
+        } catch (error) {
+            console.error('Search error:', error);
+            showNotification('Ошибка поиска', 'error');
+        } finally {
+            searchBtn.disabled = false;
+            searchBtn.innerHTML = '<i class="fas fa-search"></i> Найти букеты';
+        }
+    });
+}
+
+function initDeliveryForm() {
+    const form = document.getElementById('delivery-form');
+    const zoneSelect = document.getElementById('delivery-zone');
+    
+    if (!form || !zoneSelect) return;
+    
+    // Расчет стоимости при изменении зоны
+    zoneSelect.addEventListener('change', updateDeliveryFee);
+    
+    // Предзаполнение из сохраненных данных
+    const savedData = JSON.parse(sessionStorage.getItem('deliveryData') || '{}');
+    Object.keys(savedData).forEach(key => {
+        const input = document.getElementById(key);
+        if (input) input.value = savedData[key];
+    });
+    
+    // Автосохранение формы
+    form.addEventListener('input', function() {
+        const formData = new FormData(form);
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+        sessionStorage.setItem('deliveryData', JSON.stringify(data));
+    });
+    
+    // Обработка отправки формы
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        if (!validateStep2()) return;
+        
+        // Переходим к шагу оплаты
+        goToStep(3);
+    });
+}
+
+function updateDeliveryFee() {
+    const zoneSelect = document.getElementById('delivery-zone');
+    const bouquet = JSON.parse(sessionStorage.getItem('selectedBouquet') || '{}');
+    
+    if (!zoneSelect.value || !bouquet.price_bgn) return;
+    
+    const zone = zoneSelect.value;
+    const bouquetPrice = bouquet.price_bgn;
+    const deliveryFee = flowersAPI.calculateDeliveryFee(zone, bouquetPrice);
+    const total = bouquetPrice + deliveryFee;
+    
+    document.getElementById('bouquet-price').textContent = flowersAPI.formatPrice(bouquetPrice);
+    document.getElementById('delivery-fee').textContent = flowersAPI.formatPrice(deliveryFee);
+    document.getElementById('total-price').textContent = flowersAPI.formatPrice(total);
+    
+    // Сохраняем в сессии
+    sessionStorage.setItem('orderTotal', total.toString());
+    sessionStorage.setItem('deliveryFee', deliveryFee.toString());
+}
+
+
+function validateStep1() {
+    const selectedBouquet = sessionStorage.getItem('selectedBouquet');
+    if (!selectedBouquet) {
+        showNotification('Пожалуйста, выберите букет', 'error');
+        return false;
+    }
+    return true;
+}
+
+function validateStep2() {
+    const requiredFields = ['customer-name', 'customer-phone', 'delivery-address', 'delivery-zone'];
+    let isValid = true;
+    
+    requiredFields.forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        if (!field.value.trim()) {
+            field.classList.add('error');
+            isValid = false;
+        } else {
+            field.classList.remove('error');
+        }
+    });
+    
+    if (!isValid) {
+        showNotification('Пожалуйста, заполните все обязательные поля', 'error');
+    }
+    
+    return isValid;
+}
+
+function initPaymentMethods() {
+    const methods = document.querySelectorAll('.payment-method');
+    const placeOrderBtn = document.getElementById('place-order');
+    
+    if (!methods.length || !placeOrderBtn) return;
+    
+    methods.forEach(method => {
+        method.addEventListener('click', function() {
+            // Убираем активный класс у всех
+            methods.forEach(m => m.classList.remove('active'));
+            // Добавляем активный класс выбранному
+            this.classList.add('active');
+            
+            const paymentMethod = this.dataset.method;
+            showPaymentForm(paymentMethod);
+        });
+    });
+    
+    // По умолчанию показываем форму для карт
+    showPaymentForm('card');
+    
+    // Обработка оформления заказа
+    placeOrderBtn.addEventListener('click', async function() {
+        if (!validateStep3()) return;
+        
+        placeOrderBtn.disabled = true;
+        placeOrderBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Оформляем...';
+        
+        try {
+            await processOrder();
+        } catch (error) {
+            console.error('Order processing error:', error);
+            showNotification('Ошибка при оформлении заказа', 'error');
+        } finally {
+            placeOrderBtn.disabled = false;
+            placeOrderBtn.innerHTML = '<i class="fas fa-lock"></i> Оформить заказ';
+        }
+    });
+}
+
+function showPaymentForm(method) {
+    const formDiv = document.getElementById('payment-form');
+    if (!formDiv) return;
+    
+    const forms = {
+        card: 
+            <div class="payment-form-card">
+                <div class="form-group">
+                    <label>Номер карты</label>
+                    <input type="text" placeholder="1234 5678 9012 3456" 
+                           class="card-input" maxlength="19">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Срок действия</label>
+                        <input type="text" placeholder="ММ/ГГ" 
+                               class="card-expiry" maxlength="5">
+                    </div>
+                    <div class="form-group">
+                        <label>CVV</label>
+                        <input type="password" placeholder="123" 
+                               class="card-cvv" maxlength="3">
+                    </div>
+                </div>
+                <div class="payment-security">
+                    <i class="fas fa-lock"></i>
+                    <span>Платежи защищены через Stripe</span>
+                </div>
+            </div>
+        ,
+        
+        revolut: `
+            <div class="payment-form-revolut">
+                <div class="revolut-info">
+                    <p>Оплата через Revolut:</p>
+                    <ol>
+                        <li>Откройте приложение Revolut</li>
+                        <li>Переведите на наш номер: <strong>+359 XX XXX XXX</strong></li>
+                        <li>В комментарии укажите: <strong>Flowers-${Date.now().toString().slice(-6)}</strong></li>
+
+
+</ol>
+                </div>
+            </div>
+        ,
+        
+        bank: 
+            <div class="payment-form-bank">
+                <div class="bank-details">
+                    <h4>Банковские реквизиты:</h4>
+                    <p><strong>Банк:</strong> Булбанк</p>
+                    <p><strong>IBAN:</strong> BG12BUIN12341234567890</p>
+                    <p><strong>BIC:</strong> BINVBGSF</p>
+                    <p><strong>Получатель:</strong> The Flowers EOOD</p>
+                    <p><strong>Назначение:</strong> Заказ #${Date.now().toString().slice(-8)}</p>
+                </div>
+            </div>
+        ,
+        
+        crypto: 
+            <div class="payment-form-crypto">
+                <div class="crypto-options">
+                    <div class="crypto-option active" data-crypto="btc">
+                        <i class="fab fa-bitcoin"></i> Bitcoin (BTC)
+                    </div>
+                    <div class="crypto-option" data-crypto="eth">
+                        <i class="fab fa-ethereum"></i> Ethereum (ETH)
+                    </div>
+                    <div class="crypto-option" data-crypto="usdt">
+                        <i class="fas fa-coins"></i> USDT (TRC-20)
+                    </div>
+                </div>
+                <div class="crypto-address">
+                    <p>Адрес для оплаты:</p>
+                    <div class="address-box" id="crypto-address">
+                        3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy
+                    </div>
+                    <button class="btn btn-secondary copy-address">
+                        <i class="fas fa-copy"></i> Копировать
+                    </button>
+                    <div class="crypto-qr">
+                        <img src="images/qr-btc.png" alt="QR код">
+                    </div>
+                </div>
+            </div>
+        ,
+        
+        cash: 
+            <div class="payment-form-cash">
+                <div class="cash-info">
+                    <p><i class="fas fa-info-circle"></i> 
+                       Вы можете оплатить наличными при получении заказа.</p>
+                    <p><strong>Важно:</strong> Курьер будет иметь при себе сдачу.</p>
+                    <div class="cash-alert">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>Пожалуйста, подготовьте точную сумму</span>
+                    </div>
+                </div>
+            </div>
+        `
+    };
+    
+    formDiv.innerHTML = forms[method] || forms.card;
+    
+    // Инициализация дополнительной логики для крипто
+    if (method === 'crypto') {
+        initCryptoPayment();
+    }
+}
+
+function initCryptoPayment() {
+    const cryptoOptions = document.querySelectorAll('.crypto-option');
+    const addressBox = document.getElementById('crypto-address');
+    const copyBtn = document.querySelector('.copy-address');
+    
+    if (!cryptoOptions.length  !addressBox  !copyBtn) return;
+    
+    const addresses = {
+        btc: '3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy',
+        eth: '0x71C7656EC7ab88b098defB751B7401B5f6d8976F',
+        usdt: 'TXmzM8gxHpMk5C5vXhJ5YKh6R7mLpNqP6L'
+    };
+    
+    cryptoOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            cryptoOptions.forEach(o => o.classList.remove('active'));
+            this.classList.add('active');
+            
+            const crypto = this.dataset.crypto;
+            addressBox.textContent = addresses[crypto] || addresses.btc;
+        });
+    });
+    
+    copyBtn.addEventListener('click', function() {
+        navigator.clipboard.writeText(addressBox.textContent)
+            .then(() => {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check"></i> Скопировано!';
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                }, 2000);
+            })
+            .catch(err => {
+                console.error('Copy failed:', err);
+            });
+    });
+}
+
+function validateStep3() {
+    const activeMethod = document.querySelector('.payment-method.active');
+    if (!activeMethod) {
+        showNotification('Пожалуйста, выберите способ оплаты', 'error');
+        return false;
+    }
+    
+    return true;
+}
+
+async function processOrder() {
+    // Собираем данные заказа
+    const bouquet = JSON.parse(sessionStorage.getItem('selectedBouquet'));
+    const deliveryData = JSON.parse(sessionStorage.getItem('deliveryData') || '{}');
+    const activeMethod = document.querySelector('.payment-method.active');
+    
+    const orderData = {
+        bouquet_id: bouquet.id,
+        customer_name: deliveryData['customer-name'],
+        customer_phone: deliveryData['customer-phone'],
+        delivery_address: deliveryData['delivery-address'],
+        delivery_zone: deliveryData['delivery-zone'],
+        delivery_time: deliveryData['delivery-date'] + ' ' + deliveryData['delivery-time'],
+        notes: deliveryData['order-notes'],
+        total_price: parseFloat(sessionStorage.getItem('orderTotal') || '0'),
+        payment_method: activeMethod?.dataset.method || 'cash',
+        source: 'website'
+    };
+    
+    try {
+        // Создаем заказ через API
+        const response = await flowersAPI.createOrder(orderData);
+        
+        if (response.success) {
+            // Сохраняем номер заказа
+            sessionStorage.setItem('lastOrderId', response.data.order_id);
+            sessionStorage.setItem('lastOrderNumber', response.data.order_number);
+            
+            // Показываем успех
+            showOrderSuccess(response.data);
+            
+            // Переходим к шагу 4
+            goToStep(4);
+            
+            // Очищаем корзину и временные данные
+            CartStorage.clearCart();
+            sessionStorage.removeItem('selectedBouquet');
+            sessionStorage.removeItem('deliveryData');
+        } else {
+            throw new Error(response.error || 'Order creation failed');
+        }
+    } catch (error) {
+        throw error;
+    }
+}
+
+function showOrderSuccess(orderData) {
+    const detailsDiv = document.getElementById('order-details');
+    if (!detailsDiv) return;
+    
+    detailsDiv.innerHTML = 
+        <div class="success-details">
+            <div class="detail-row">
+                <span>Номер заказа:</span>
+                <strong>${orderData.order_number}</strong>
+            </div>
+            <div class="detail-row">
+                <span>Сумма:</span>
+                <strong>${flowersAPI.formatPrice(orderData.total_price)}</strong>
+            </div>
+            <div class="detail-row">
+                <span>Способ оплаты:</span>
+                <strong>${getPaymentMethodName(orderData.payment_method)}</strong>
+            </div>
+            <div class="detail-row">
+                <span>Статус:</span>
+                <span class="status-pending">Ожидает подтверждения</span>
+            </div>
+            <div class="delivery-estimate">
+                <i class="fas fa-clock"></i>
+                <span>Примерное время доставки: 45-60 минут</span>
+            </div>
+        </div>
+    ;
+}
+
+function getPaymentMethodName(method) {
+    const names = {
+        card: 'Банковская карта',
+        revolut: 'Revolut',
+        bank: 'Банковский перевод',
+        crypto: 'Криптовалюта',
+        cash: 'Наличные курьеру'
+    };
+    return names[method] || method;
+}
+
+function showNotification(message, type = 'info') {
+    // Используем функцию из script.js или создаем свою
+    if (typeof window.showNotification === 'function') {
+        window.showNotification(message, type);
+    } else {
+        alert(message);
+    }
+}
+
+8. Деплой сайта
+
+Простой способ: GitHub Pages
+
+1. Создайте репозиторий на GitHub
+2. Загрузите все файлы сайта
+3. В настройках репозитория включите GitHub Pages
+4. Сайт будет доступен по адресу: https://username.github.io/the-flowers
+
+Способ для продвинутых: Netlify/Vercel
+
+bash
+# Netlify
+npm install -g netlify-cli
+netlify deploy
+
+# Vercel
+npm install -g vercel
+vercel
+`
+
+Интеграция с ассистентом:
+
+
+В файле api/client.js замените baseUrl на URL вашего ассистента:
+
+// Для продакшена
+const API_CONFIG = {
+    baseUrl: 'https://ваш-сервер.com/api',
+    // ...
+};
+
+// Для разработки
+// baseUrl: 'http://localhost:8000/api'
