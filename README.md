@@ -1,3 +1,22 @@
+Структура сайта THE FLOWERS
+the-flowers-website/
+├── index.html              # Главная страница
+├── showcase.html          # Витрина букетов
+├── order.html            # Оформление заказа
+├── dashboard.html        # Дашборд (защищенный)
+├── style.css            # Стили
+├── script.js            # JavaScript
+├── images/              # Изображения
+│   ├── logo.png
+│   ├── bouquet1.jpg
+│   └── ...
+└── api/                 # Интеграция с ассистентом
+    └── client.js
+
+
+
+
+
 🚀 Преимущества сайта:
 
 1. Полная интеграция с ассистентом
