@@ -1,0 +1,423 @@
+## 1. index.html (Главная страница)
+
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Flowers - Цветы в Бургасе | Доставка букетов</title>
+    <meta name="description" content="Свежие цветы в Бургасе с доставкой. Закажите через AI-ассистента Олега 24/7. 12 лет опыта.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>🌹 The Flowers</h1>
+                <p>Цветы в Бургасе</p>
+            </div>
+            <nav class="nav">
+                <a href="#home" class="active">Главная</a>
+                <a href="#showcase">Витрина</a>
+                <a href="#order">Заказать</a>
+                <a href="#delivery">Доставка</a>
+                <a href="#contact">Контакты</a>
+                <a href="https://t.me/Flowersworldgbot" class="btn-assistant" target="_blank">
+                    <i class="fas fa-robot"></i> Олег 24/7
+                </a>
+            </nav>
+            <div class="language-switcher">
+                <select id="language-select">
+                    <option value="ru">🇷🇺 RU</option>
+                    <option value="bg">🇧🇬 BG</option>
+                    <option value="en">🇬🇧 EN</option>
+                    <option value="tr">🇹🇷 TR</option>
+                </select>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+  
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Свежие цветы в Бургасе</h2>
+                <p class="subtitle">Доставка по всему городу • 12 лет опыта • Заказ через AI-ассистента 24/7</p>
+                
+                <div class="cta-buttons">
+                    <a href="#showcase" class="btn btn-primary">
+                        <i class="fas fa-eye"></i> Смотреть букеты
+                    </a>
+                    <a href="https://t.me/Flowersworldgbot" class="btn btn-ai" target="_blank">
+                        <i class="fas fa-robot"></i> Заказать через Олега
+                    </a>
+                </div>
+
+                <!-- Преимущества под кнопками -->
+                <div class="hero-features">
+                    <span class="hero-feature"><i class="fas fa-check"></i> Фото перед отправкой</span>
+                    <span class="hero-feature"><i class="fas fa-check"></i> Гарантия свежести 7 дней</span>
+                    <span class="hero-feature"><i class="fas fa-check"></i> Доставка от 1 часа</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Oleg Section -->
+    <section id="oleg" class="oleg-section">
+        <div class="container">
+            <div class="oleg-content">
+                <div class="oleg-avatar">
+                    <div class="oleg-avatar-img">🤖</div>
+                    <h3 class="oleg-name">Олег</h3>
+                    <p class="oleg-title">AI-ассистент • Эксперт по цветам</p>
+                </div>
+                <div class="oleg-info">
+                    <h2>Все заказы — через Олега!</h2>
+                    <p class="oleg-description">
+                        Олег — наш AI-ассистент, который знает всё о цветах. Он поможет подобрать 
+                        идеальный букет, оформит заказ и ответит на любые вопросы. Работает 24/7!
+                    </p>
+                    <div class="oleg-features">
+                        <div class="oleg-feature">
+                            <span class="icon">⚡</span>
+                            <div>
+                                <h4>Мгновенные ответы</h4>
+                                <p>Отвечает за секунды, без ожидания</p>
+                            </div>
+                        </div>
+                        <div class="oleg-feature">
+                            <span class="icon">🌙</span>
+                            <div>
+                                <h4>Работает 24/7</h4>
+                                <p>Даже ночью и в праздники</p>
+                            </div>
+                        </div>
+                        <div class="oleg-feature">
+                            <span class="icon">🎯</span>
+                            <div>
+                                <h4>Умные рекомендации</h4>
+                                <p>Подберёт букет под повод и бюджет</p>
+                            </div>
+                        </div>
+                        <div class="oleg-feature">
+                            <span class="icon">💼</span>
+                            <div>
+                                <h4>Любые проекты</h4>
+                                <p>От букета до свадебного оформления</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://t.me/Flowersworldgbot" class="btn btn-ai btn-large" target="_blank">
+                        <i class="fas fa-robot"></i> Написать Олегу в Telegram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <h2>Почему выбирают The Flowers?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-award"></i>
+                    <h3>12 лет опыта</h3>
+                    <p>Мария Зеленкова создаёт букеты-шедевры с 2012 года</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-camera"></i>
+                    <h3>Фото перед отправкой</h3>
+                    <p>Вы увидите букет до того, как его получит адресат</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Гарантия свежести</h3>
+                    <p>Цветы простоят минимум 7 дней или заменим бесплатно</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-truck"></i>
+                    <h3>Быстрая доставка</h3>
+                    <p>По Бургасу от 1 часа. Отслеживание в реальном времени</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showcase Preview -->
+    <section id="showcase" class="showcase-preview">
+        <div class="container">
+            <h2>Популярные букеты</h2>
+            <div class="bouquets-grid" id="bouquets-preview">
+                <!-- Статичные карточки букетов -->
+                <div class="bouquet-card">
+                    <div class="bouquet-image">
+                        <div class="bouquet-placeholder">🌹</div>
+                    </div>
+                    <div class="bouquet-info">
+                        <h3>Нежность</h3>
+                        <div class="bouquet-price">от 45 лв</div>
+                        <p>Пионы, эустома, зелень</p>
+                        <a href="https://t.me/Flowersworldgbot" class="btn btn-primary btn-small" target="_blank">
+                            Заказать
+                        </a>
+                    </div>
+                </div>
+                <div class="bouquet-card">
+                    <div class="bouquet-image">
+                        <div class="bouquet-placeholder">🌷</div>
+                    </div>
+                    <div class="bouquet-info">
+                        <h3>Страсть</h3>
+                        <div class="bouquet-price">от 80 лв</div>
+                        <p>25 красных роз</p>
+                        <a href="https://t.me/Flowersworldgbot" class="btn btn-primary btn-small" target="_blank">
+                            Заказать
+                        </a>
+                    </div>
+                </div>
+                <div class="bouquet-card">
+                    <div class="bouquet-image">
+                        <div class="bouquet-placeholder">💐</div>
+                    </div>
+                    <div class="bouquet-info">
+                        <h3>Элегантность</h3>
+                        <div class="bouquet-price">от 55 лв</div>
+                        <p>Диантусы, эустома</p>
+                        <a href="https://t.me/Flowersworldgbot" class="btn btn-primary btn-small" target="_blank">
+                            Заказать
+                        </a>
+                    </div>
+                </div>
+                <div class="bouquet-card">
+                    <div class="bouquet-image">
+                        <div class="bouquet-placeholder">🌸</div>
+                    </div>
+                    <div class="bouquet-info">
+                        <h3>Весенний</h3>
+                        <div class="bouquet-price">от 35 лв</div>
+                        <p>Тюльпаны, нарциссы</p>
+                        <a href="https://t.me/Flowersworldgbot" class="btn btn-primary btn-small" target="_blank">
+                            Заказать
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <p class="showcase-note">Не нашли подходящий? Олег соберёт букет специально для вас!</p>
+                <a href="https://t.me/Flowersworldgbot" class="btn btn-ai" target="_blank">
+                    <i class="fas fa-robot"></i> Заказать индивидуальный букет
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section id="order" class="order-section">
+        <div class="container">
+            <h2>Как заказать?</h2>
+            <div class="order-steps-grid">
+                <div class="order-step-card">
+                    <div class="step-number">1</div>
+                    <h3>Напишите Олегу</h3>
+                    <p>Расскажите о поводе, бюджете и пожеланиях</p>
+                </div>
+                <div class="order-step-card">
+                    <div class="step-number">2</div>
+                    <h3>Получите варианты</h3>
+                    <p>Олег подберёт букеты и покажет фото</p>
+                </div>
+                <div class="order-step-card">
+                    <div class="step-number">3</div>
+                    <h3>Подтвердите заказ</h3>
+                    <p>Выберите букет и укажите адрес доставки</p>
+                </div>
+                <div class="order-step-card">
+                    <div class="step-number">4</div>
+                    <h3>Радуйтесь!</h3>
+                    <p>Получите фото готового букета и доставку</p>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="https://t.me/Flowersworldgbot" class="btn btn-ai btn-large" target="_blank">
+                    <i class="fas fa-robot"></i> Начать заказ через Олега
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Zones -->
+    <section id="delivery" class="delivery-zones">
+        <div class="container">
+            <h2>Зоны доставки в Бургасе</h2>
+            <div class="zones-grid">
+                <div class="zone-card center">
+                    <h3><i class="fas fa-star"></i> Центр Бургаса</h3>
+                    <p class="price">Бесплатно от 80 лв</p>
+                    <ul>
+                        <li>Център</li>
+                        <li>Морска градина</li>
+                        <li>Лазур, Изгрев</li>
+                        <li>Славейков, Ветрен</li>
+                    </ul>
+                </div>
+                <div class="zone-card districts">
+                    <h3><i class="fas fa-home"></i> Районы</h3>
+                    <p class="price">8 лв</p>
+                    <ul>
+                        <li><strong>Сарафово</strong></li>
+                        <li>Победа</li>
+                        <li>Меден рудник</li>
+                        <li>Долно/Горно Езерово</li>
+                    </ul>
+                </div>
+                <div class="zone-card suburbs">
+                    <h3><i class="fas fa-tree"></i> Пригороды</h3>
+                    <p class="price">12 лв</p>
+                    <ul>
+                        <li>Крайморие</li>
+                        <li>Братя Миладинови</li>
+                        <li>Българово*</li>
+                        <li>Черноморец*</li>
+                    </ul>
+                    <p class="note">* по предварительному заказу</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team-section">
+        <div class="container">
+            <h2>Наша команда</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">👩‍🌾</div>
+                    <h3>Мария Зеленкова</h3>
+                    <p class="team-role">Основатель • Флорист</p>
+                    <p class="team-description">12 лет создаёт букеты-шедевры. Лично контролирует качество каждого заказа.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👨‍💻</div>
+                    <h3>Даниэль Канай</h3>
+                    <p class="team-role">Технический директор</p>
+                    <p class="team-description">Создаёт технологии для вашего удобства. Разработал AI-ассистента Олега.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">🤖</div>
+                    <h3>Олег</h3>
+                    <p class="team-role">AI-ассистент</p>
+                    <p class="team-description">Эксперт по цветочному миру. Работает 24/7, помогает с заказами.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <h2>Отзывы клиентов</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        «Эти букеты просто шедевр! Жена довольна. Стоят уже который день — 
+                        заказывал пионы, диантусы и эустомы. Рекомендую!»
+                    </p>
+                    <div class="testimonial-author">
+                        <span class="author-name">Даниэль Канай</span>
+                        <span class="author-location">Бургас</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        «Свежайшие цветы! Простояли 10 дней. Олег помог выбрать букет 
+                        для мамы на юбилей — она была в восторге!»
+                    </p>
+                    <div class="testimonial-author">
+                        <span class="author-name">Елена</span>
+                        <span class="author-location">Сарафово</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Info -->
+    <section id="contact" class="contact-info">
+        <div class="container">
+            <h2>Контакты</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Наш магазин</h3>
+                    <p><strong>The Flowers</strong></p>
+                    <p>Центр Бургаса</p>
+                    <p>Болгария, 8000 Бургас</p>
+                </div>
+                <div class="contact-card">
+                    <h3><i class="fas fa-clock"></i> Рабочие часы</h3>
+                    <p><strong>Ежедневно:</strong> 9:00 - 21:00</p>
+                    <p><strong>Олег:</strong> 24/7</p>
+                </div>
+                <div class="contact-card">
+                    <h3><i class="fas fa-comments"></i> Связь с нами</h3>
+                    <p>Все заказы через Олега:</p>
+                    <a href="https://t.me/Flowersworldgbot" class="btn btn-ai btn-small" target="_blank">
+                        <i class="fab fa-telegram"></i> @Flowersworldgbot
+                    </a>
+                    <p style="margin-top: 10px;">Или напишите Марии:</p>
+                    <a href="https://t.me/masha_zel95" class="btn btn-secondary btn-small" target="_blank">
+                        <i class="fab fa-telegram"></i> @masha_zel95
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>🌹 The Flowers</h3>
+                    <p>Цветы с любовью в Бургасе</p>
+                    <p>12 лет опыта • Основатель: Мария Зеленкова</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Главная</a>
+                    <a href="#showcase">Букеты</a>
+                    <a href="#delivery">Доставка</a>
+                    <a href="#contact">Контакты</a>
+                </div>
+                <div class="footer-cta">
+                    <p>Заказать букет:</p>
+                    <a href="https://t.me/Flowersworldgbot" class="btn btn-ai" target="_blank">
+                        <i class="fas fa-robot"></i> Написать Олегу
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 The Flowers, Бургас. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Button -->
+    <a href="https://t.me/Flowersworldgbot" class="floating-btn" target="_blank">
+        <i class="fas fa-robot"></i>
+        <span>Заказать</span>
+    </a>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
